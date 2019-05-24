@@ -1,0 +1,129 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+// Include theme-specific fonts
+@import url(../../lib/font/apercu-pro/apercu-pro.css);
+
+// Theme colors
+$primary-brown: rgb(132, 117, 117);
+$primary-orange: rgb(239, 125, 0);
+$primary-blue: rgb(205, 220, 243);
+$primary-yellow: rgb(255, 249, 199);
+$primary-pink: rgb(250, 220, 235);
+
+$secondary-grey: rgb(242, 237, 238);
+$secondary-blue: rgb(148, 188, 229);
+$secondary-pink: rgb(245, 181, 211);
+$secondary-yellow: rgb(255, 244, 130);
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: $primary-orange;
+
+$mainFontSize: 42px;
+$mainFont: 'Apercu Pro', Arial, Helvetica, sans-serif;
+$headingFont: 'Apercu Pro', Arial, Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: inherit;
+$headingFontWeight: normal;
+$headingLineHeight: 2em;
+$linkColor: #ec7b1a;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 1.4em;
+$heading2Size: 1.2em;
+$heading3Size: 1.0em;
+$heading4Size: 1.0em;
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal {
+
+  section {
+    text-align: left;
+  }
+
+  section.has-dark-background,
+  section.cofinpro-white {
+    &, h1, h2, h3, h4, h5, h6 {
+      color: #fff;
+    }
+  }
+
+  em {
+    // Emphasise on words makes them orange instead of italic
+    font-style: normal;
+    color: $primary-orange;
+  }
+
+  .slide-background:not(.overview):not(.stack),
+  .overview.section {
+    // The cofinpro logo gets rendered on every slide, but not on the overview page
+    background-image: url('../../lib/img/Cofinpro_logo.svg');
+    background-size: 10%;
+    background-repeat: no-repeat;
+    background-position: 97% 3%;
+
+    &.cofinpro-white,
+    .has-dark-background {
+      background-image: url('../../lib/img/Cofinpro_logo_white.svg');
+    }
+  }
+
+  h1 {
+    // slide titles appears on top
+    text-align: left;
+    color: $primary-brown;
+    max-width: 60%;
+  }
+
+  ul {
+    // List style uses blue bullet points
+    list-style-type: none !important;
+
+    li::before {
+      list-style: none;
+      content: "\2022"; /* \2022 is the CSS Code/unicode for a bullet */
+      color: $primary-blue;
+      font-weight: bold;
+      display: inline-block;
+      width: 0.6em;
+      margin-left: -1em;
+    }
+  }
+
+  section img {
+    border: none;
+    box-shadow: none;
+  }
+
+  .slide-number::before {
+    content: 'Cofinpro AG // '
+  }
+  .slide-number {
+    position: absolute;
+    display: block;
+    left: 8px;
+    bottom: 8px;
+    z-index: 31;
+    font-size: 12px;
+    line-height: 1;
+    padding: 5px;
+    background-color: transparent;
+    color: $primary-brown;
+  }
+
+}

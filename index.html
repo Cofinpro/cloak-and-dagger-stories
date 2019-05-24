@@ -8,10 +8,10 @@
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/cofinpro.css">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+		<link rel="stylesheet" href="lib/css/atom-one-light.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -25,8 +25,34 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-background-image="lib/img/Titelbilder/Technologie.png">
+					<h1>Titelfolie</h1>
+				</section>
+				<section>
+					<h1>der übliche Kram</h1>
+					<p>Here's some stuff</p>
+					<ul>
+						<li>and stuff</li>
+						<li>more stuff</li>
+					</ul>
+					<h2>Stuff</h2>
+					<p>and text with some <em>really</em> important stuff</p>
+				</section>
+				<section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png" data-background-size="40%">
+					<h1>Intermediate section</h1>
+				</section>
+				<section data-background-color="rgb(205, 220, 243)" data-background-image="lib/img/Icons/book.png" data-background-size="40%">
+					<h1>Intermediate section</h1>
+				</section>
+				<section data-background-color="rgb(250, 220, 235)" data-background-image="lib/img/Icons/darts.png" data-background-size="40%">
+					<h1>Intermediate section</h1>
+				</section>
+				<section data-background-color="rgb(242, 237, 238)" data-background-image="lib/img/Icons/cloud.png" data-background-size="40%">
+					<h1>Intermediate section</h1>
+				</section>
+				<section class="cofinpro-white" data-background-color="rgb(239, 125, 0)" data-background-image="lib/img/Icons/idea.png" data-background-size="40%">
+					<h1>Intermediate section</h1>
+				</section>
 			</div>
 		</div>
 
@@ -37,6 +63,17 @@
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				backgroundTransition: 'convex',
+				transition: 'convex',
+				history: true,
+				width: '100%',
+				center: false,
+				slideNumber: 'c',
+				keyboard: {
+					// Customization for my spotlight
+					39: 'next', // Right Arrow
+					37: 'prev'  // Left Arrow
+				},
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },

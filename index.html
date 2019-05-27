@@ -1,86 +1,188 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+    <title>Cloak-and-Dagger Stories &mdash; Absichern von Webanwendungen mit Keycloak</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/cofinpro.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/cofinpro.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/atom-one-light.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/atom-one-light.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-background-image="lib/img/Titelbilder/Technologie.png">
-					<h1>Titelfolie</h1>
-				</section>
-				<section>
-					<h1>der übliche Kram</h1>
-					<p>Here's some stuff</p>
-					<ul>
-						<li>and stuff</li>
-						<li>more stuff</li>
-					</ul>
-					<h2>Stuff</h2>
-					<p>and text with some <em>really</em> important stuff</p>
-				</section>
-				<section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png" data-background-size="40%">
-					<h1>Intermediate section</h1>
-				</section>
-				<section data-background-color="rgb(205, 220, 243)" data-background-image="lib/img/Icons/book.png" data-background-size="40%">
-					<h1>Intermediate section</h1>
-				</section>
-				<section data-background-color="rgb(250, 220, 235)" data-background-image="lib/img/Icons/darts.png" data-background-size="40%">
-					<h1>Intermediate section</h1>
-				</section>
-				<section data-background-color="rgb(242, 237, 238)" data-background-image="lib/img/Icons/cloud.png" data-background-size="40%">
-					<h1>Intermediate section</h1>
-				</section>
-				<section class="cofinpro-white" data-background-color="rgb(239, 125, 0)" data-background-image="lib/img/Icons/idea.png" data-background-size="40%">
-					<h1>Intermediate section</h1>
-				</section>
-			</div>
-		</div>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <section data-background-image="lib/img/Titelbilder/Technologie.png">
+                <h1>Cloak and Dagger Stories<br/>
+                    <small>Absichern von Anwendungen mit Keycloak</small>
+                </h1>
+            </section>
 
-		<script src="js/reveal.js"></script>
+            <section>
+                <h1>Wer bin ich?</h1>
+                <p>Gregor Tudan</p>
+                <p>Greg0rT</p>
+            </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				backgroundTransition: 'convex',
-				transition: 'convex',
-				history: true,
-				width: '100%',
-				center: false,
-				slideNumber: 'c',
-				keyboard: {
-					// Customization for my spotlight
-					39: 'next', // Right Arrow
-					37: 'prev'  // Left Arrow
-				},
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+            <section data-background-image="lib/img/Surrender.jpg" class="cofinpro-white">
+                <h1>State of IT-Security</h1>
+            </section>
+
+            <section data-background-image="lib/img/haveIBeenPwnd.png" data-background-size="70%">
+            </section>
+
+            <section>
+                <h1>Warum sicher Anmeldung schwer ist</h1>
+
+                <div class="twocolumn">
+                    <div>
+                        <h2>Provider bauen Mist</h2>
+                        <ul>
+                            <li>Roll your own crypto</li>
+                            <li>Kennwörter im Klartext</li>
+                            <li>seltsame Password-Policies</li>
+                            <li>XSS-Lücken</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>User bauen Mist</h2>
+                        <ul>
+                            <li>Zu leichtes Kennwort</li>
+                            <li>selbes Kennwort überall</li>
+                            <li>Social Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <blockquote class="fragment fade-out" data-fragment-index="1">
+                    Lege nicht alle Eier in einen Korb
+                    &mdash; Sprichwort
+                </blockquote>
+                <blockquote class="fragment fade-in-then-out" data-fragment-index="1">
+                    Lege all deine Eier in einen Korb - und dann gib recht acht auf den Korb
+                    &mdash; Marc Twain
+                </blockquote>
+            </section>
+
+            <section>
+                <h1>Worüber rede ich?</h1>
+                <ol>
+                    <li>kleine Einführung in OAuth</li>
+                    <li>das Keycloak-Projekt</li>
+                    <li>Absichern von Anwendungen
+                        <ul>
+                            <li>"klassische" Webanwendungen</li>
+                            <li>SPA</li>
+                            <li>Mobile Apps</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+        </section>
+
+        <section>
+            <section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png"
+                     data-background-size="40%">
+                <h1>OAuth</h1>
+            </section>
+
+            <section>
+                <h1>"Wir machen OAuth!"</h1>
+                <p>Meistens sind hier mehrere Dinge gemeint:
+                <ul>
+                    <li>OAuth 2.0</li>
+                    <li>OpenID Connect</li>
+                    <li>JSON Web-Tokens</li>
+                </ul>
+                </p>
+            </section>
+            <section>
+                <h1>OAuth 2.0</h1>
+
+                <dl>
+                    <dt>Resource Owner</dt>
+                    <dd>
+                        hat eine "Resource" die geschützt werden soll<br>
+                        hat Credentials
+                    </dd>
+
+                    <dt>Resource Server</dt>
+                    <dd>
+                        hier liegt die Ressource des Owners
+                    </dd>
+
+                    <dt>Client</dt>
+                    <dd>
+                        möchte auf die Ressource des Ressource-Owners zugreifen
+                    </dd>
+
+                    <dt>Auth-Server</dt>
+                    <dd></dd>
+                </dl>
+            </section>
+        </section>
+
+
+        <!-- Templates
+        <section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png" data-background-size="40%">
+            <h1>Intermediate section</h1>
+        </section>
+        <section data-background-color="rgb(205, 220, 243)" data-background-image="lib/img/Icons/book.png" data-background-size="40%">
+            <h1>Intermediate section</h1>
+        </section>
+        <section data-background-color="rgb(250, 220, 235)" data-background-image="lib/img/Icons/darts.png" data-background-size="40%">
+            <h1>Intermediate section</h1>
+        </section>
+        <section data-background-color="rgb(242, 237, 238)" data-background-image="lib/img/Icons/cloud.png" data-background-size="40%">
+            <h1>Intermediate section</h1>
+        </section>
+        <section class="cofinpro-white" data-background-color="rgb(239, 125, 0)" data-background-image="lib/img/Icons/idea.png" data-background-size="40%">
+            <h1>Intermediate section</h1>
+        </section>
+        -->
+    </div>
+</div>
+
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+        backgroundTransition: 'convex',
+        transition: 'convex',
+        history: true,
+        height: '100%',
+        width: '92%',
+        center: true,
+        slideNumber: 'c',
+        keyboard: {
+            // Customization for my spotlight
+            39: 'next', // Right Arrow
+            37: 'prev'  // Left Arrow
+        },
+        dependencies: [
+            {src: 'plugin/notes/notes.js', async: true},
+            {src: 'plugin/highlight/highlight.js', async: true}
+        ]
+    });
+</script>
+</body>
 </html>

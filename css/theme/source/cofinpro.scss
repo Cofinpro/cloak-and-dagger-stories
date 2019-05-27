@@ -34,8 +34,8 @@ $headingFont: 'Apercu Pro', Arial, Helvetica, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: inherit;
-$headingFontWeight: normal;
-$headingLineHeight: 2em;
+$headingFontWeight: bold;
+$headingMargin: 1rem 0 2rem 0;
 $linkColor: #ec7b1a;
 $linkColorHover: lighten($linkColor, 15%);
 $selectionBackgroundColor: lighten($linkColor, 25%);
@@ -48,6 +48,7 @@ $heading4Size: 1.0em;
 
 // Theme template ------------------------------
 @import "../template/theme";
+@import "../template/layouts";
 // ---------------------------------------------
 
 .reveal {
@@ -87,7 +88,7 @@ $heading4Size: 1.0em;
     // slide titles appears on top
     text-align: left;
     color: $primary-brown;
-    max-width: 60%;
+    max-width: 70%;
   }
 
   ul {
@@ -95,7 +96,6 @@ $heading4Size: 1.0em;
     list-style-type: none !important;
 
     li::before {
-      list-style: none;
       content: "\2022"; /* \2022 is the CSS Code/unicode for a bullet */
       color: $primary-blue;
       font-weight: bold;

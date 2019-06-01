@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/cofinpro.css">
 
+    <!-- Theme for sequence diagrams -->
+
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/atom-one-light.css">
 
@@ -42,11 +44,13 @@
                 <h1>State of IT-Security</h1>
             </section>
 
-            <section data-background-image="lib/img/haveIBeenPwnd.png" data-background-size="70%">
+            <section>
+                <h1>Have I been pawned?</h1>
+                <img src="lib/img/haveIBeenPwnd.png" alt="Screenshot of https://haveibeenpawned.io">
             </section>
 
             <section>
-                <h1>Warum sicher Anmeldung schwer ist</h1>
+                <h1>Warum sichere Anmeldung schwer ist:</h1>
 
                 <div class="twocolumn">
                     <div>
@@ -55,15 +59,18 @@
                             <li>Roll your own crypto</li>
                             <li>Kennwörter im Klartext</li>
                             <li>seltsame Password-Policies</li>
-                            <li>XSS-Lücken</li>
+                            <li>veraltete Verfahren (keine 2FA)</li>
+                            <li>Sicherheitslücken (XSS, Injection&hellip;)</li>
+
                         </ul>
                     </div>
                     <div>
                         <h2>User bauen Mist</h2>
                         <ul>
-                            <li>Zu leichtes Kennwort</li>
+                            <li>zu leichtes Kennwort</li>
                             <li>selbes Kennwort überall</li>
                             <li>Social Engineering</li>
+                            <li>zu faul für 2FA</li>
                         </ul>
                     </div>
                 </div>
@@ -71,12 +78,12 @@
 
             <section>
                 <blockquote class="fragment fade-out" data-fragment-index="1">
-                    Lege nicht alle Eier in einen Korb
-                    &mdash; Sprichwort
+                    <span>Lege nicht alle Eier in einen Korb</span>
+                    <footer>&mdash; Sprichwort</footer>
                 </blockquote>
                 <blockquote class="fragment fade-in-then-out" data-fragment-index="1">
-                    Lege all deine Eier in einen Korb - und dann gib recht acht auf den Korb
-                    &mdash; Marc Twain
+                    <span>Lege all deine Eier in einen Korb - und dann gib recht acht auf den Korb</span>
+                    <footer>&mdash; Marc Twain</footer>
                 </blockquote>
             </section>
 
@@ -104,40 +111,147 @@
 
             <section>
                 <h1>"Wir machen OAuth!"</h1>
-                <p>Meistens sind hier mehrere Dinge gemeint:
+
+                <p>Meistens sind hier mehrere Dinge gemeint:</p>
                 <ul>
                     <li>OAuth 2.0</li>
                     <li>OpenID Connect</li>
                     <li>JSON Web-Tokens</li>
                 </ul>
-                </p>
+
             </section>
+
             <section>
                 <h1>OAuth 2.0</h1>
 
                 <dl>
                     <dt>Resource Owner</dt>
-                    <dd>
-                        hat eine "Resource" die geschützt werden soll<br>
-                        hat Credentials
-                    </dd>
-
-                    <dt>Resource Server</dt>
-                    <dd>
-                        hier liegt die Ressource des Owners
-                    </dd>
+                    <dd>hat eine "Resource" die geschützt werden soll</dd>
+                    <dd>hat Credentials</dd>
 
                     <dt>Client</dt>
-                    <dd>
-                        möchte auf die Ressource des Ressource-Owners zugreifen
-                    </dd>
+                    <dd>App mit der ein RO auf die Resource zugreift</dd>
+
+                    <dt>Resource Server</dt>
+                    <dd>hier liegt die Resource des Owners (API)</dd>
 
                     <dt>Auth-Server</dt>
-                    <dd></dd>
+                    <dd>prüft die Credentials des Resource-Owners</dd>
+                    <dd>stellt einen Token für den Zugriff auf Resourcen aus</dd>
                 </dl>
+            </section>
+
+            <section>
+                <h1>OpenID-Connect</h1>
+
+                <p>erweitert die OAuth-Spec um:</p>
+                <ul>
+                    <li>eine <em>REST-API</em> für OAuth</li>
+                    <li>die Möglichkeit <em>Informationen zum User</em> auszutauschen</li>
+                    <li>ein einheitliches <em>Token-Format</em> in JSON</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Tokens</h1>
+                <img src="lib/img/boarding-pass.jpg" alt="Boarding pass"/>
+            </section>
+
+            <section>
+                <h1>Warum Tokens?</h1>
+                entkoppeln Authentifizierung und Authorisierung
+                <ul>
+                    <li>leicht weiterzureichen</li>
+                    <li>Echtheit kann überprüft werden</li>
+                    <li>begrenzte Lebenszeit</li>
+                    <li>können Zusatzinfos enthalten</li>
+                </ul>
+                <aside class="notes">
+                    weiterreichbar (anders als kennwörter)
+                    Lebenszeit (Kennwort gilt lang)
+                    Zentral invalidierbar
+                </aside>
+            </section>
+
+            <section>
+                <h1>JSON Web-Tokens (JWT)</h1>
+                <img src="lib/img/jwt-io.png" alt="Screenshot von https://jwt.io">
+            </section>
+
+
+        </section>
+
+        <section>
+            <section data-background-color="rgb(205, 220, 243)" data-background-image="lib/img/Icons/book.png"
+                     data-background-size="40%">
+                <h1>Keycloak</h1>
+            </section>
+
+            <section>
+                <h1>Keycloak ist</h1>
+
+                <ul>
+                    <li>ein OIDC-Auth-Server</li>
+                    <li>Open-Source</li>
+                    <li>nicht nur für Java</li>
+                    <li>von Redhat gesponsert</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Integration mit Keycloak</h1>
+                <div class="uml" style="margin: 0 25%;">
+                    [the cool stuff] --> [Keycloak]
+                    [Keycloak] <- [SAML]
+                    [Keycloak] <- [LDAP]
+                    [Keycloak] <- [RDBMS]
+                </div>
+            </section>
+            <section>
+                <h1>weitere coole Features</h1>
+                <ul>
+                    <li>Single-Sign-In und -Auth</li>
+                    <li>Social-Login</li>
+                    <li>Impersonation</li>
+                    <li>TOTP-Authentication</li>
+                    <li>Self-Service</li>
+                    <li>eigene Flows</li>
+                    <li>...</li>
+                </ul>
             </section>
         </section>
 
+        <section>
+            <section data-background-color="rgb(242, 237, 238)" data-background-image="lib/img/Icons/cloud.png" data-background-size="40%">
+                <h1>Anwendungen<br>absichern</h1>
+            </section>
+            <section>
+                <h1>Webanwendungen</h1>
+            </section>
+            <section>
+                <h1>Single-Page-Apps</h1>
+            </section>
+            <section>
+                <h1>Keycloak Gatekeeper</h1>
+                <div class="uml" style="margin: 0 25%;">
+                    [&lt;actor&gt; Browser] -&gt; [&lt;transceiver&gt; Gatekeeper]
+                    [&lt;actor&gt; Browser] -&gt; [Keycloak]
+                    [Gatekeeper] --&gt; [Keycloak]
+                    [Gatekeeper] -&gt; [Application]
+                </div>
+            </section>
+            <section>
+                <h1>Hybride Apps</h1>
+            </section>
+            <section>
+                <h1>mobile Apps</h1>
+            </section>
+            <section>
+
+            </section>
+        </section>
+
+        <section data-background-image="lib/img/andrena-feedback.svg"  data-background-size="contain" data-background-position="top"></section>
 
         <!-- Templates
         <section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png" data-background-size="40%">
@@ -178,9 +292,21 @@
             39: 'next', // Right Arrow
             37: 'prev'  // Left Arrow
         },
+        nomnoml: {
+            renderMode: 'svg',
+            font: 'Apercu Pro',
+            fill: 'white',
+            edges: 'rounded',
+            padding: 12,
+        },
         dependencies: [
             {src: 'plugin/notes/notes.js', async: true},
-            {src: 'plugin/highlight/highlight.js', async: true}
+            {src: 'plugin/highlight/highlight.js', async: true},
+
+            {src: 'plugin/nomnoml/dagre.min.js'},
+            {src: 'plugin/nomnoml/lodash.min.js'},
+            {src: 'plugin/nomnoml/nomnoml.js'},
+            {src: 'plugin/nomnoml/nomnoml-plugin.js'},
         ]
     });
 </script>

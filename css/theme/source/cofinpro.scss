@@ -30,6 +30,7 @@ $headingColor: $primary-orange;
 
 $mainFontSize: 42px;
 $mainFont: 'Apercu Pro', Arial, Helvetica, sans-serif;
+$mainColor: rgb(33, 37, 41);
 $headingFont: 'Apercu Pro', Arial, Helvetica, sans-serif;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
@@ -102,17 +103,41 @@ $heading4Size: 1.0em;
       display: inline-block;
       width: 0.6em;
       margin-left: -1em;
+      transform: rotate(-1deg);
+    }
+  }
+
+  blockquote {
+    padding: 10px;
+    border: thick dashed $primary-blue;
+    border-radius: 3px;
+    box-shadow: none;
+    font-style: normal;
+    font-size: 1.3em;
+
+    :first-child::before {
+      content: "»";
+    }
+
+    :first-child::after {
+      content: "«"
     }
   }
 
   section img {
     border: none;
     box-shadow: none;
+    max-height: calc(70vh);
+    max-width: calc(70vw);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
   .slide-number::before {
     content: 'Cofinpro AG // '
   }
+
   .slide-number {
     position: absolute;
     display: block;

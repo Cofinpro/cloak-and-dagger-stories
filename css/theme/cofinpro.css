@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * White theme for reveal.js. This is the opposite of the 'black' theme.
  *
@@ -15,7 +16,7 @@ body {
   font-family: "Apercu Pro", Arial, Helvetica, sans-serif;
   font-size: 42px;
   font-weight: normal;
-  color: #222; }
+  color: #212529; }
 
 ::selection {
   color: #fff;
@@ -227,7 +228,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #222;
+  border: 4px solid #212529;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
 
 .reveal section img.plain {
@@ -318,11 +319,29 @@ body {
     font-weight: bold;
     display: inline-block;
     width: 0.6em;
-    margin-left: -1em; }
+    margin-left: -1em;
+    transform: rotate(-1deg); }
+
+.reveal blockquote {
+  padding: 10px;
+  border: thick dashed #cddcf3;
+  border-radius: 3px;
+  box-shadow: none;
+  font-style: normal;
+  font-size: 1.3em; }
+  .reveal blockquote :first-child::before {
+    content: "»"; }
+  .reveal blockquote :first-child::after {
+    content: "«"; }
 
 .reveal section img {
   border: none;
-  box-shadow: none; }
+  box-shadow: none;
+  max-height: calc(70vh);
+  max-width: calc(70vw);
+  margin-left: auto;
+  margin-right: auto;
+  display: block; }
 
 .reveal .slide-number::before {
   content: 'Cofinpro AG // '; }

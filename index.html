@@ -222,7 +222,8 @@
         </section>
 
         <section>
-            <section data-background-color="rgb(242, 237, 238)" data-background-image="lib/img/Icons/cloud.png" data-background-size="40%">
+            <section data-background-color="rgb(242, 237, 238)" data-background-image="lib/img/Icons/cloud.png"
+                     data-background-size="40%">
                 <h1>Anwendungen<br>absichern</h1>
             </section>
             <section>
@@ -241,7 +242,60 @@
                 </div>
             </section>
             <section>
-                <h1>Hybride Apps</h1>
+                <h1>Hybride Apps mit Cordova</h1>
+                <div class="twocolumn">
+                    <div class="fragment">
+                        <h2>In-App Browser</h2>
+                        <ul>
+                            <li>Web-View in Web-View</li>
+                            <li>eigenes UI</li>
+                            <li>hat einige Quirks</li>
+                            <li>App sieht Interaktion</li>
+                        </ul>
+                    </div>
+                    <div class="fragment">
+                        <h2>Native</h2>
+                        <ul>
+                            <li>nutzt native Browser-Views
+                                <ul>
+                                    <li>Chrome Custom-Tabs</li>
+                                    <li>SFSafariViewController</li>
+                                </ul>
+                            </li>
+                            <li>App hat keinen Zugriff</li>
+                            <li>Redirect zur App notwendig</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section data-background-video="lib/video/cordova.m4v" data-background-size="contain"
+                     data-background-video-muted data-background-video-loop>
+                <h1 style="width:25%;">Cordova In-App Browser</h1>
+            </section>
+            <section data-background-video="lib/video/ionic-browsertab.m4v" data-background-size="contain"
+                     data-background-video-muted data-background-video-loop>
+                <h1 style="width:25%;">Cordova Native</h1>
+            </section>
+            <section>
+                <h1>iOS Web-View-Race</h1>
+                <ol>
+                    <li>SFSafariViewController</li>
+                    <li class="fragment">SFAuthenticationSession (iOS 11)
+                        <ul>
+                            <li>Login für 3rd-Party-Apps mit OAuth</li>
+                            <li>Single-Sign-On für Apps</li>
+                        </ul>
+                    </li>
+                    <li class="fragment">ASWebAuthenticationSession (iOS 12)
+                        <ul>
+                            <li>schützt User-Credentials</li>
+                        </ul>
+                    </li>
+                </ol>
+                <div class="fragment">
+                <hr>
+                <p>Android: <span style="font-size: larger">🤷</span></p>
+                </div>
             </section>
             <section>
                 <h1>mobile Apps</h1>
@@ -251,7 +305,8 @@
             </section>
         </section>
 
-        <section data-background-image="lib/img/andrena-feedback.svg"  data-background-size="contain" data-background-position="top"></section>
+        <section data-background-image="lib/img/andrena-feedback.svg" data-background-size="contain"
+                 data-background-position="top"></section>
 
         <!-- Templates
         <section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png" data-background-size="40%">

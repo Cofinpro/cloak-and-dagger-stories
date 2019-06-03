@@ -36,8 +36,16 @@
 
             <section>
                 <h1>Wer bin ich?</h1>
-                <p>Gregor Tudan</p>
-                <p>Greg0rT</p>
+                <div class="twocolumn">
+                    <p>
+                        Gregor Tudan<br><br>
+                        <img style="display: inline; height: 1em; margin: 0;" src="lib/img/Icons/icons_twitter.png"
+                             alt="Twitter"> Greg0rT<br>
+                        <a href="mailto:gregor.tudan@cofinpro.de">gregor.tudan@cofinpro.de</a>
+
+                    <p>
+                    <img data-src="lib/img/gregor_tudan.jpg">
+                </div>
             </section>
 
             <section data-background-image="lib/img/Surrender.jpg" class="cofinpro-white">
@@ -95,7 +103,7 @@
                     <li>Absichern von Anwendungen
                         <ul>
                             <li>"klassische" Webanwendungen</li>
-                            <li>SPA</li>
+                            <li>Signle-Page-Apps</li>
                             <li>Mobile Apps</li>
                         </ul>
                     </li>
@@ -199,17 +207,17 @@
             <section>
                 <h1>Keycloak ist</h1>
                 <div class="twocolumn">
-                <ul>
-                    <li>ein Auth-Server für</li>
                     <ul>
-                        <li>OpenID Connect</li>
-                        <li>SAML</li>
+                        <li>ein Auth-Server für</li>
+                        <ul>
+                            <li>OpenID Connect</li>
+                            <li>SAML</li>
+                        </ul>
+                        <li>Open-Source</li>
+                        <li>nicht nur für Java</li>
+                        <li>von Redhat gesponsert</li>
+                        <li>der freie Ableger von Redhat Singe Sign-On</li>
                     </ul>
-                    <li>Open-Source</li>
-                    <li>nicht nur für Java</li>
-                    <li>von Redhat gesponsert</li>
-                    <li>der freie Ableger von Redhat Singe Sign-On</li>
-                </ul>
                     <img src="lib/img/keycloak_logo_600px.svg"/>
                 </div>
             </section>
@@ -345,7 +353,8 @@
                 <h1>Webanwendungen</h1>
                 <h2>Client konfigurieren</h2>
                 <figure>
-                <img data-src="lib/img/keycloak-json.png" alt="Export der keycloak.json aus dem Keycloak Webinterface">
+                    <img data-src="lib/img/keycloak-json.png"
+                         alt="Export der keycloak.json aus dem Keycloak Webinterface">
                 </figure>
             </section>
             <section>
@@ -394,10 +403,10 @@
                 <ul>
                     <li>über Javascript-Adapter</li>
                     <li>darauf aufbauende Module
-                    <ul>
-                        <li><a href="https://www.npmjs.com/package/keycloak-angular">Keyloak-Angular</a></li>
-                        <li><a href="https://www.npmjs.com/package/react-keycloak">React-Keycloak</a></li>
-                    </ul>
+                        <ul>
+                            <li><a href="https://www.npmjs.com/package/keycloak-angular">Keyloak-Angular</a></li>
+                            <li><a href="https://www.npmjs.com/package/react-keycloak">React-Keycloak</a></li>
+                        </ul>
                     </li>
                     <li>OAuth-Code-Flow mit PKCE Extension</li>
                 </ul>
@@ -405,7 +414,8 @@
 
             <section>
                 <h1>OAuth und Single-Page-Apps</h1>
-                <p><a href="https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-01">RFC-Draft</a>: OAuth 2.0 for Browser-Based Apps</p>
+                <p><a href="https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-01">RFC-Draft</a>: OAuth 2.0
+                    for Browser-Based Apps</p>
                 <h2>Problem</h2>
                 <ul>
                     <li>Browser und Client in Einem</li>
@@ -451,7 +461,7 @@
                             <li>nutzt native Browser-Views
                                 <ul>
                                     <li>Chrome Custom-Tabs</li>
-                                    <li>SFSafariViewController</li>
+                                    <li><code>SFSafariViewController</code></li>
                                 </ul>
                             </li>
                             <li>App hat keinen Zugriff</li>
@@ -471,16 +481,16 @@
             <section>
                 <h1>iOS Web-View-Race</h1>
                 <ol>
-                    <li>UIWebView (In-App Browser - <em>don't do it</em>)</li>
+                    <li><code>UIWebView</code> (In-App Browser - <em>don't do it</em>)</li>
 
-                    <li class="fragment">SFSafariViewController</li>
-                    <li class="fragment">SFAuthenticationSession (iOS 11)
+                    <li class="fragment"><code>SFSafariViewController</code></li>
+                    <li class="fragment"><code>SFAuthenticationSession</code> (iOS 11)
                         <ul>
                             <li>Login für 3rd-Party-Apps mit OAuth</li>
                             <li>Single-Sign-On für Apps</li>
                         </ul>
                     </li>
-                    <li class="fragment">ASWebAuthenticationSession (iOS 12)
+                    <li class="fragment"><code>ASWebAuthenticationSession</code> (iOS 12)
                         <ul>
                             <li>schützt User-Credentials</li>
                         </ul>
@@ -503,12 +513,13 @@
         </section>
 
         <section>
-        <section data-background-color="rgb(250, 220, 235)" data-background-image="lib/img/Icons/darts.png" data-background-size="40%">
-            <h1 style="max-width: 30%">Diskussion und Fragen</h1>
-        </section>
+            <section data-background-color="rgb(250, 220, 235)" data-background-image="lib/img/Icons/darts.png"
+                     data-background-size="40%">
+                <h1 style="max-width: 30%">Diskussion und Fragen</h1>
+            </section>
 
-        <section data-background-image="lib/img/andrena-feedback.svg" data-background-size="contain"
-                 data-background-position="top"></section>
+            <section data-background-image="lib/img/andrena-feedback.svg" data-background-size="contain"
+                     data-background-position="top"></section>
         </section>
 
         <!-- Templates

@@ -169,7 +169,7 @@
                 <aside class="notes">
                     weiterreichbar (anders als kennwörter)
                     Lebenszeit (Kennwort gilt lang)
-                    Zentral invalidierbar
+                    zentral invalidierbar
                 </aside>
             </section>
 
@@ -178,8 +178,17 @@
                 <img src="lib/img/jwt-io.png" alt="Screenshot von https://jwt.io">
             </section>
 
-
+            <section>
+                <h1>OAuth Flow</h1>
+                <div class="uml" style="margin: 0 25%;">
+                    [&lt;actor&gt; Browser] <-> [Client]
+                    [Browser] <-> [Auth-Server]
+                    [Client] -> [Resource Server]
+                    [Client] -> [Auth-Server]
+                </div>
+            </section>
         </section>
+
 
         <section>
             <section data-background-color="rgb(205, 220, 243)" data-background-image="lib/img/Icons/book.png"
@@ -189,32 +198,62 @@
 
             <section>
                 <h1>Keycloak ist</h1>
-
+                <div class="twocolumn">
                 <ul>
-                    <li>ein OIDC-Auth-Server</li>
+                    <li>ein Auth-Server für</li>
+                    <ul>
+                        <li>OpenID Connect</li>
+                        <li>SAML</li>
+                    </ul>
                     <li>Open-Source</li>
                     <li>nicht nur für Java</li>
                     <li>von Redhat gesponsert</li>
+                    <li>der freie Ableger von Redhat Singe Sign-On</li>
                 </ul>
+                    <img src="lib/img/keycloak_logo_600px.svg"/>
+                </div>
             </section>
 
             <section>
                 <h1>Integration mit Keycloak</h1>
                 <div class="uml" style="margin: 0 25%;">
                     [the cool stuff] --> [Keycloak]
-                    [Keycloak] <- [SAML]
-                    [Keycloak] <- [LDAP]
-                    [Keycloak] <- [RDBMS]
+                    [Keycloak] <- [&lt;sender&gt;SAML]
+                    [Keycloak] <- [&lt;database&gt;LDAP]
+                    [Keycloak] <- [&lt;database&gt;RDBMS]
+                    [Keycloak] <- [&lt;sender&gt;OIDC]
                 </div>
             </section>
+
             <section>
-                <h1>weitere coole Features</h1>
+                <h1>mehr als Login</h1>
                 <ul>
-                    <li>Single-Sign-In und -Auth</li>
+                    <li>Registrierung</li>
+                    <li>Password vergessen</li>
+                    <li>Account verwalten</li>
+                    <li>Terms of Service</li>
+                    <li>...</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Custom Themes</h1>
+                <img data-src="lib/img/login-sunrise.png">
+            </section>
+
+            <section>
+                <h1>Admin UI</h1>
+                <img data-src="lib/img/keycloak-admin-ui.png">
+            </section>
+
+            <section>
+                <h1>weitere Features</h1>
+                <ul>
+                    <li>Cluster-fähig</li>
+                    <li>User-Federation</li>
                     <li>Social-Login</li>
                     <li>Impersonation</li>
-                    <li>TOTP-Authentication</li>
-                    <li>Self-Service</li>
+                    <li>2-Faktor Auth (TOTP)</li>
                     <li>eigene Flows</li>
                     <li>...</li>
                 </ul>
@@ -226,11 +265,154 @@
                      data-background-size="40%">
                 <h1>Anwendungen<br>absichern</h1>
             </section>
+
+            <section>
+                <h1>Adapter</h1>
+                <p>Keycloak stellt fertige Adapter bereit für</p>
+                <ul>
+                    <li>Java
+                        <ul>
+                            <li>Wildfly, Jetty, Tomcat, Fuse</li>
+                            <li>Servlets, JAAS</li>
+                            <li>Spring Boot, Spring Security</li>
+                            <li>CLI, Desktop (z.B. Swing, JavaFX)</li>
+                        </ul>
+                    </li>
+                    <li>Javascript/TS
+                        <ul>
+                            <li>Standalone, NodeJS</li>
+                        </ul>
+                    </li>
+                    <li>Generic Proxy (Keycloak Gatekeeper)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>weitere Integationen</h1>
+                <p>jede Menge OIDC-Libraries für verschiedene Sprachen</p>
+                <ul>
+                    <li>C#</li>
+                    <li>Python</li>
+                    <li>Android</li>
+                    <li>iOS</li>
+                    <li>...</li>
+                    <li>Apache, Nginx</li>
+                </ul>
+                <p>
+                    <a href="https://www.keycloak.org/docs/latest/securing_apps/">https://www.keycloak.org/docs/latest/securing_apps/</a>
+                </p>
+            </section>
+
+            <section>
+                <h1>Aufgaben der Adapter</h1>
+                <ul>
+                    <li>Token-Validierung</li>
+                    <li>Parsen des Tokens</li>
+                    <li>Setzen von Rollen/Berechtigungen</li>
+                    <li>Login/Logout (über Redirects)</li>
+                    <li>Token Refresh</li>
+                </ul>
+            </section>
+
             <section>
                 <h1>Webanwendungen</h1>
+                <h2>Adapter installieren</h2>
+
+                <ul>
+                    <li>in Serververzeichnis entpacken oder</li>
+                    <li>Dependency hinzufügen</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Webanwendungen</h1>
+                <h2>Client konfigurieren</h2>
+
+                über eigene Konfigurationsdatei (<code>keycloak.json</code>)
+                <pre>
+                <code data-trim data-noescape>
+                    {
+                        "realm" :        "demo",
+                        "clientId" :     "hawtio-client",
+                        "url" :          "http://keycloak.example.com/auth",
+                        "ssl-required" : "external",
+                        "public-client" : true
+                    }
+                </code></pre>
+            </section>
+
+            <section>
+                <h1>Webanwendungen</h1>
+                <h2>Client konfigurieren</h2>
+                <figure>
+                <img data-src="lib/img/keycloak-json.png" alt="Export der keycloak.json aus dem Keycloak Webinterface">
+                </figure>
+            </section>
+            <section>
+                <h1>Webanwendungen</h1>
+                <h2>Berechtigungen konfigurieren</h2>
+                <p>je nach Plattform</p>
+                <ul style="width: 80%">
+                    <li>Konfiguration (<code>application.yaml</code>, <code>web.xml</code>)</li>
+                    <li>Annotationen (<code>@RolesAllowed</code>)</li>
+                    <li>programmatisch
+                        <pre><code data-trim>app.get('/complain', keycloak.protect(), complaintHandler);</code></pre>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h1>Webanwendungen</h1>
+                <h2>Berechtigungen konfigurieren</h2>
+                <pre><code data-trim>
+                    &lt;?xml version="&quot;?&gt;
+                    &lt;web-app&gt;
+                        &lt;security-constraint&gt;
+                            &lt;web-resource-collection&gt;
+                                &lt;web-resource-name&gt;Admins&lt;/web-resource-name&gt;
+                                &lt;url-pattern&gt;/admin/*&lt;/url-pattern&gt;
+                            &lt;/web-resource-collection&gt;
+                            &lt;auth-constraint&gt;
+                                &lt;role-name&gt;admin&lt;/role-name&gt;
+                            &lt;/auth-constraint&gt;
+                        &lt;/security-constraint&gt;
+
+
+                        &lt;login-config&gt;
+                            &lt;auth-method&gt;KEYCLOAK&lt;/auth-method&gt;
+                            &lt;realm-name&gt;Demo&lt;/realm-name&gt;
+                        &lt;/login-config&gt;
+
+                        &lt;security-role&gt;
+                            &lt;role-name&gt;admin&lt;/role-name&gt;
+                        &lt;/security-role&gt;
+                    &lt;/web-app&gt;
+                </code></pre>
+
             </section>
             <section>
                 <h1>Single-Page-Apps</h1>
+                <ul>
+                    <li>über Javascript-Adapter</li>
+                    <li>darauf aufbauende Module
+                    <ul>
+                        <li><a href="https://www.npmjs.com/package/keycloak-angular">Keyloak-Angular</a></li>
+                        <li><a href="https://www.npmjs.com/package/react-keycloak">React-Keycloak</a></li>
+                    </ul>
+                    </li>
+                    <li>OAuth-Code-Flow mit PKCE Extension</li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>OAuth und Single-Page-Apps</h1>
+                <p><a href="https://tools.ietf.org/html/draft-ietf-oauth-browser-based-apps-01">RFC-Draft</a>: OAuth 2.0 for Browser-Based Apps</p>
+                <h2>Problem</h2>
+                <ul>
+                    <li>Browser und Client in Einem</li>
+                    <li>mögen Redirects nicht</li>
+                    <li>viel Validierung im Client</li>
+                    <li>sicheres Speichern von Tokens?</li>
+                </ul>
             </section>
             <section>
                 <h1>Keycloak Gatekeeper</h1>
@@ -240,6 +422,16 @@
                     [Gatekeeper] --&gt; [Keycloak]
                     [Gatekeeper] -&gt; [Application]
                 </div>
+            </section>
+            <section class="cofinpro-white" data-background-color="rgb(239, 125, 0)"
+                     data-background-image="lib/img/Icons/idea.png" data-background-size="40%">
+                <h1>Mobile Apps</h1>
+            </section>
+            <section>
+                <h1>Mobile Apps</h1>
+                <p><a href="https://tools.ietf.org/html/rfc8252">RFC-8252</a>: OAuth 2.0 for Native Apps</p>
+
+                <img data-src="lib/img/app-flow.png" alt="Login Flow in Apps (App -> Browser -> App)"/>
             </section>
             <section>
                 <h1>Hybride Apps mit Cordova</h1>
@@ -279,7 +471,9 @@
             <section>
                 <h1>iOS Web-View-Race</h1>
                 <ol>
-                    <li>SFSafariViewController</li>
+                    <li>UIWebView (In-App Browser - <em>don't do it</em>)</li>
+
+                    <li class="fragment">SFSafariViewController</li>
                     <li class="fragment">SFAuthenticationSession (iOS 11)
                         <ul>
                             <li>Login für 3rd-Party-Apps mit OAuth</li>
@@ -293,20 +487,29 @@
                     </li>
                 </ol>
                 <div class="fragment">
-                <hr>
-                <p>Android: <span style="font-size: larger">🤷</span></p>
+                    <hr>
+                    <p>Android: In-App Browser oder Custom-Tabs <span style="font-size: larger">🤷</span></p>
                 </div>
             </section>
             <section>
-                <h1>mobile Apps</h1>
-            </section>
-            <section>
+                <h1>native mobile Apps</h1>
+                <p>(generische) 3rd-Party Libraries</p>
+                <ul>
+                    <li><a href="https://openid.github.io/AppAuth-iOS/">App-Auth</a></li>
+                    <li><a href="https://aerogear.org">AeroGear</a></li>
 
+                </ul>
             </section>
+        </section>
+
+        <section>
+        <section data-background-color="rgb(250, 220, 235)" data-background-image="lib/img/Icons/darts.png" data-background-size="40%">
+            <h1 style="max-width: 30%">Diskussion und Fragen</h1>
         </section>
 
         <section data-background-image="lib/img/andrena-feedback.svg" data-background-size="contain"
                  data-background-position="top"></section>
+        </section>
 
         <!-- Templates
         <section data-background-color="rgb(255, 249, 199)" data-background-image="lib/img/Icons/swarm.png" data-background-size="40%">

@@ -128,6 +128,9 @@ $heading4Size: 1.0em;
     border: dashed $primary-pink;
   }
 
+  pre code {
+    max-width: 80vw;
+  }
   section img {
     border: none;
     box-shadow: none;

@@ -337,6 +337,9 @@ body {
 .reveal hr {
   border: dashed #fadceb; }
 
+.reveal pre code {
+  max-width: 80vw; }
+
 .reveal section img {
   border: none;
   box-shadow: none;
